@@ -12,19 +12,8 @@
 ****************/
 
 
-/** put this into networks.php file and include it here **/
-require_once('../dbconfig.php');
 
-$q = $dbh->prepare("select * from cloudone");
-if(!$q->execute()) {
-    require_once('netlist.php');
-
-}else{
-    while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
-        $tv_spots[$row['air_date']] = array('network'=>$row['network'],'spot_cost'=>$row['spot_cost'],'duration'=>$row['duration'],'program'=>$row['program']);
-    }
-    // var_dump($tv_spots);
-}
+require_once('readdata.php');
 
 ?>
 
@@ -87,7 +76,7 @@ if(!$q->execute()) {
                 $('.result').html('one moment please.');
                 $.post( "update.php", data).done(function(data) {
                     $( ".result" ).html(data );
-                    dom_setup();
+                    // dom_setup();
                 });     
         });
         $('#networks').change(function(){

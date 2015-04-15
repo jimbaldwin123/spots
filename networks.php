@@ -1,5 +1,5 @@
 <?php
-require_once('netlist.php');
+require_once('readdata.php');
 
 $result = array();
 foreach($tv_spots as $key=>$spot){
